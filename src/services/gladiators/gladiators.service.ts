@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { GladiatorsClient } from '../gladiators/client/gladiators.client';
-import { GladiatorInputDto } from '../../core/dto/gladiators/gladiator.input.dto';
+import { Gladiator } from '../../core/entities/gladiator';
 
 @Injectable()
 export class GladiatorsService {
@@ -12,10 +12,10 @@ export class GladiatorsService {
   async getGladiator(id: string) {
     return this.client.getGladiator(id);
   }
-  async createGladiator(Gladiator: GladiatorInputDto) {
-    return this.client.createGladiator(Gladiator);
+  async createGladiator(gladiator: Gladiator) {
+    return this.client.createGladiator(gladiator);
   }
-  async modifyGladiator(Gladiator: GladiatorInputDto) {
+  async modifyGladiator(Gladiator) {
     return this.client.modifyGladiator(Gladiator);
   }
   async deleteGladiator(id: string) {

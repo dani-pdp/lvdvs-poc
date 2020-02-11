@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Gladiator } from '../../../core/entities/gladiator';
-import { GladiatorInputDto } from 'src/core/dto/gladiators/gladiator.input.dto';
+import { CreateGladiatorInputDto } from '../../../core/dto/gladiators/create.gladiator.input.dto';
 
 @Injectable()
 export class GladiatorsClient {
@@ -10,23 +10,23 @@ export class GladiatorsClient {
 
   async getAllGladiators(): Promise<any> {
     return await this.gladiatorsRepository.find({
-      select: ['id', 'name', 'years', 'bio'],
+      select: ['id', 'name', 'style', 'bio'],
     });
   }
 
   async getGladiator(id: string): Promise<any> {
     return await this.gladiatorsRepository.find({
-      select: ['id', 'name', 'years', 'bio'],
+      select: ['id', 'name', 'style', 'bio'],
       where: [{ id: id }],
     });
   }
 
-  async createGladiator(Gladiator: GladiatorInputDto) {
-    return await this.gladiatorsRepository.save(Gladiator);
+  async createGladiator(gladiator: Gladiator) {
+    return await this.gladiatorsRepository.save(gladiator);
   }
 
-  async modifyGladiator(Gladiator: GladiatorInputDto) {
-    return await this.gladiatorsRepository.save(Gladiator);
+  async modifyGladiator(gladiator: any) {
+    return await this.gladiatorsRepository.save(gladiator);
   }
 
   async deleteGladiator(id: string) {
