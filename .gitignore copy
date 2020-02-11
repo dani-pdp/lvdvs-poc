@@ -1,0 +1,9 @@
+node_modules
+dist
+volumes
+/db/*
+!.gitkeep
+/coverage/*
+!/coverage/badge.svg
+junit.xml
+.env

@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  # NodeJS Main service
+  app:
+    image: node:lts-alpine
+    restart: unless-stopped
+    tty: true
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/app/
+    env_file: .env
+    depends_on:
+      - mysql
+    working_dir: /usr/app
+    command: 'npm run start:dev'
+
+
+  # MySQL Service
+  mysql:
+    image: 'mysql:5.7'
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    env_file: .env
