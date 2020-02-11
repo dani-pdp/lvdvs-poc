@@ -3,7 +3,7 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 export const COMMON_CONFIG = {
   entities: [
-    __dirname + '/../../../core/entities/cat.{ts,js}',
+    __dirname + '/../../../core/entities/gladiator.{ts,js}',
   ] /*
   migrations: [__dirname + '/../migrations/*.{ts,js}'],
   cli: {
@@ -18,6 +18,7 @@ export const COMMON_CONFIG = {
 export const PRODUCTION_DATABASE_CONFIG: TypeOrmModuleOptions = {
   type: 'mysql',
   host: ConfigService.get('DB_HOST'),
+  synchronize: false,
   port: parseInt(ConfigService.get('DB_PORT'), 10),
   username: ConfigService.get('DB_USERNAME'),
   password: ConfigService.get('DB_PASSWORD'),

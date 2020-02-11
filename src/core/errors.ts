@@ -9,11 +9,11 @@ export const ApiErrors = {
 
 export const DomainErrors = {
   ...ApiErrors,
-  INVALID_CAT_ID: {
+  INVALID_GLADIATOR_ID: {
     code: 3001,
-    message: 'Invalid cat id provided.',
+    message: 'Invalid gladiator id provided.',
   },
-  INVALID_CAT_BIO: {
+  INVALID_GLADIATOR_BIO: {
     code: 3002,
     message: 'The bio provided is too short.',
   },
