@@ -18,7 +18,7 @@ export const COMMON_CONFIG = {
 export const PRODUCTION_DATABASE_CONFIG: TypeOrmModuleOptions = {
   type: 'mysql',
   host: ConfigService.get('DB_HOST'),
-  synchronize: false,
+  synchronize: true,
   port: parseInt(ConfigService.get('DB_PORT'), 10),
   username: ConfigService.get('DB_USERNAME'),
   password: ConfigService.get('DB_PASSWORD'),

@@ -6,6 +6,9 @@ export enum GladiatorStyle {
   THRAEX = 'THRAEX',
   DIMACHAERUS = 'DIMACHAERUS',
 }
+export interface StyleModifiers {
+  attackMod: number;
+}
 
 @Entity()
 export class Gladiator {
@@ -35,6 +38,9 @@ export class Gladiator {
 
   @Column('text')
   weapon: string;
+
+  @Column('text')
+  shield: string;
 
   @Column('text')
   head_armor: string;

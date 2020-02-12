@@ -1,4 +1,5 @@
 import { Gladiator, GladiatorStyle } from '../../../core/entities/gladiator';
+import { gladiatorStyleInit } from '../../../core/entities/gladiator.styles.init';
 
 export class CreateGladiatorInputDto {
   readonly id: string;
@@ -12,30 +13,20 @@ export const toGladiator = (input: CreateGladiatorInputDto): Gladiator => {
     return null;
   }
   const gladiator = new Gladiator();
-
+  const styleInit = gladiatorStyleInit[input.style];
   gladiator.name = input.name;
-
   gladiator.bio = input.bio;
-
   gladiator.style = input.style as GladiatorStyle;
-
   gladiator.level = 0;
-
-  gladiator.strength = 0;
-
-  gladiator.dexterity = 0;
-
-  gladiator.agility = 0;
-
-  gladiator.weapon = 'None';
-
-  gladiator.head_armor = 'None';
-
-  gladiator.arms_armor = 'None';
-
-  gladiator.chest_armor = 'None';
-
-  gladiator.legs_armor = 'None';
+  gladiator.strength = styleInit.init_strength;
+  gladiator.dexterity = styleInit.init_dexterity;
+  gladiator.agility = styleInit.init_agility;
+  gladiator.weapon = styleInit.init_weapon;
+  gladiator.shield = styleInit.init_shield;
+  gladiator.head_armor = styleInit.init_head_armor;
+  gladiator.arms_armor = styleInit.init_arms_armor;
+  gladiator.chest_armor = styleInit.init_chest_armor;
+  gladiator.legs_armor = styleInit.init_legs_armor;
 
   return gladiator;
 };
