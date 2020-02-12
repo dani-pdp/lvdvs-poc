@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Gladiator } from '../../../core/entities/gladiator';
-import { CreateGladiatorInputDto } from '../../../core/dto/gladiators/create.gladiator.input.dto';
 
 @Injectable()
 export class GladiatorsClient {
@@ -10,13 +9,12 @@ export class GladiatorsClient {
 
   async getAllGladiators(): Promise<any> {
     return await this.gladiatorsRepository.find({
-      select: ['id', 'name', 'style', 'bio'],
+      select: ['name', 'style', 'bio', 'level', 'state', 'popularity'],
     });
   }
 
   async getGladiator(id: string): Promise<any> {
     return await this.gladiatorsRepository.find({
-      select: ['id', 'name', 'style', 'bio'],
       where: [{ id: id }],
     });
   }

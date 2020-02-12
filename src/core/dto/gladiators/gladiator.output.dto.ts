@@ -1,18 +1,27 @@
 import { Gladiator } from '../../../core/entities/gladiator';
 
 export class GladiatorOutputDto {
-  readonly id: string;
   readonly name: string;
-  readonly years: number;
-  readonly binaryYears: number;
+  readonly level: number;
+  readonly popularity: number;
+  readonly bio: string;
+  readonly state: string;
+  readonly style: string;
+  readonly strength: number;
+  readonly dexterity: number;
+  readonly agility: number;
 }
 export const fromGladiatortEntity = (gladiator: Gladiator) => {
-  const { id, name, years } = gladiator[0];
-  const binaryYears = years.toString(2);
+  const { name, level, popularity, bio, state, style, strength, dexterity, agility } = gladiator[0];
   return {
-    id: id,
-    name: name,
-    years: years,
-    binaryYears: parseInt(binaryYears),
+    name,
+    level,
+    popularity,
+    bio,
+    state,
+    style,
+    strength,
+    dexterity,
+    agility,
   };
 };

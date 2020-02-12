@@ -2,7 +2,6 @@ import { Gladiator, GladiatorStyle } from '../../../core/entities/gladiator';
 import { gladiatorStyleInit } from '../../../core/entities/gladiator.styles.init';
 
 export class CreateGladiatorInputDto {
-  readonly id: string;
   readonly name: string;
   readonly style: string;
   readonly bio: string;
@@ -16,8 +15,10 @@ export const toGladiator = (input: CreateGladiatorInputDto): Gladiator => {
   const styleInit = gladiatorStyleInit[input.style];
   gladiator.name = input.name;
   gladiator.bio = input.bio;
+  gladiator.state = 'READY';
   gladiator.style = input.style as GladiatorStyle;
   gladiator.level = 0;
+  gladiator.popularity = 0;
   gladiator.strength = styleInit.init_strength;
   gladiator.dexterity = styleInit.init_dexterity;
   gladiator.agility = styleInit.init_agility;

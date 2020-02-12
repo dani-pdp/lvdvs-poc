@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 export enum GladiatorStyle {
   MURMILLO = 'MURMILLO',
@@ -12,20 +12,23 @@ export interface StyleModifiers {
 
 @Entity()
 export class Gladiator {
-  @PrimaryGeneratedColumn()
-  id: string;
-
-  @Column({ length: 10 })
+  @PrimaryColumn()
   name: string;
 
   @Column('text')
   bio: string;
 
   @Column('text')
+  state: string;
+
+  @Column('text')
   style: GladiatorStyle;
 
   @Column('int')
   level: number;
+
+  @Column('int')
+  popularity: number;
 
   @Column('int')
   strength: number;
