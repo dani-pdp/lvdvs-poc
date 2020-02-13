@@ -19,7 +19,7 @@ export class Gladiator {
   bio: string;
 
   @Column('text')
-  state: string;
+  status: string;
 
   @Column('text')
   style: GladiatorStyle;

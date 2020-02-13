@@ -15,7 +15,7 @@ export const toGladiator = (input: CreateGladiatorInputDto): Gladiator => {
   const styleInit = gladiatorStyleInit[input.style];
   gladiator.name = input.name;
   gladiator.bio = input.bio;
-  gladiator.state = 'READY';
+  gladiator.status = 'READY';
   gladiator.style = input.style as GladiatorStyle;
   gladiator.level = 0;
   gladiator.popularity = 0;

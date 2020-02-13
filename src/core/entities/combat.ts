@@ -9,17 +9,22 @@ export class Combat {
 
   public simulate() {
     this.contest();
-    console.log(this.winner.name + ' won against ' + this.loser.name);
-    return this.winner.name;
+    return { winner: this.winner, loser: this.loser, result: this.result };
   }
+
   private contest() {
     if (Math.random() >= 0.5) {
-      this.winner = this.gladiator1[0];
-      this.loser = this.gladiator2[0];
+      this.winner = this.gladiator1;
+      this.loser = this.gladiator2;
     } else {
-      this.winner = this.gladiator2[0];
-      this.loser = this.gladiator1[0];
+      this.winner = this.gladiator2;
+      this.loser = this.gladiator1;
     }
-    this.result = 'FORGIVEN';
+
+    if (Math.random() >= 0.2) {
+      this.result = 'FORGIVEN';
+    } else {
+      this.result = 'KILLED';
+    }
   }
 }

@@ -7,7 +7,7 @@ export class CombatsController {
   constructor(private readonly createCombat: CreateCombat) {}
 
   @Post()
-  create_Gladiator(@Body() CombatDto: CreateCombatInputDto) {
+  create_Combat(@Body() CombatDto: CreateCombatInputDto) {
     return this.createCombat.call(CombatDto);
   }
 }

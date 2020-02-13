@@ -4,6 +4,7 @@ import { GetGladiator } from '../core/use_cases/gladiators/get.gladiator';
 import { CreateGladiator } from '../core/use_cases/gladiators/create.gladiator';
 import { ModifyGladiator } from '../core/use_cases/gladiators/modify.gladiator';
 import { DeleteGladiator } from '../core/use_cases/gladiators/delete.gladiator';
+import { RestoreGladiatorStatus } from '../core/use_cases/gladiators/restore.gladiator.status';
 import { CreateGladiatorInputDto } from '../core/dto/gladiators/create.gladiator.input.dto';
 
 @Controller('gladiators')
@@ -14,6 +15,7 @@ export class GladiatorsController {
     private readonly createGladiator: CreateGladiator,
     private readonly modifyGladiator: ModifyGladiator,
     private readonly deleteGladiator: DeleteGladiator,
+    private readonly restoreGladiatorStatus: RestoreGladiatorStatus,
   ) {}
 
   @Get()
@@ -21,8 +23,8 @@ export class GladiatorsController {
     return this.getAllGladiators.call();
   }
 
-  @Get(':id')
-  get_Gladiator(@Param('id') GladiatorId: string) {
+  @Get(':name')
+  get_Gladiator(@Param('name') GladiatorId: string) {
     return this.getGladiator.call(GladiatorId);
   }
 
@@ -36,8 +38,13 @@ export class GladiatorsController {
     return this.modifyGladiator.call(GladiatorDto);
   }
 
-  @Delete(':id')
-  delete_Gladiator(@Param('id') GladiatorId: string) {
+  @Delete(':name')
+  delete_Gladiator(@Param('name') GladiatorId: string) {
     return this.deleteGladiator.call(GladiatorId);
+  }
+
+  @Get('/restore/:name')
+  restore_Gladiator_Status(@Param('name') GladiatorId: string) {
+    return this.restoreGladiatorStatus.call(GladiatorId);
   }
 }

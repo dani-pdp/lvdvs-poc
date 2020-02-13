@@ -44,3 +44,8 @@ export const gladiatorStyleInit = {
     init_legs_armor: 'none',
   },
 };
+
+export const resultConsequence = {
+  FORGIVEN: 'HURT',
+  KILLED: 'DEAD',
+};

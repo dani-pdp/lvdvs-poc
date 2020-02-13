@@ -5,10 +5,17 @@ import { GetGladiator } from './get.gladiator';
 import { CreateGladiator } from './create.gladiator';
 import { ModifyGladiator } from './modify.gladiator';
 import { DeleteGladiator } from './delete.gladiator';
-
+import { RestoreGladiatorStatus } from './restore.gladiator.status';
 @Module({
-  providers: [GetAllGladiators, GetGladiator, CreateGladiator, ModifyGladiator, DeleteGladiator],
+  providers: [
+    GetAllGladiators,
+    GetGladiator,
+    CreateGladiator,
+    ModifyGladiator,
+    DeleteGladiator,
+    RestoreGladiatorStatus,
+  ],
   imports: [GladiatorsServiceModule],
-  exports: [GetAllGladiators, GetGladiator, CreateGladiator, ModifyGladiator, DeleteGladiator],
+  exports: [GetAllGladiators, GetGladiator, CreateGladiator, ModifyGladiator, DeleteGladiator, RestoreGladiatorStatus],
 })
 export class GladiatorsModule {}

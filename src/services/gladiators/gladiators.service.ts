@@ -9,8 +9,8 @@ export class GladiatorsService {
   async getAllGladiators() {
     return this.client.getAllGladiators();
   }
-  async getGladiator(id: string) {
-    return this.client.getGladiator(id);
+  async getGladiator(name: string) {
+    return this.client.getGladiator(name);
   }
   async createGladiator(gladiator: Gladiator) {
     return this.client.createGladiator(gladiator);
@@ -18,7 +18,10 @@ export class GladiatorsService {
   async modifyGladiator(Gladiator) {
     return this.client.modifyGladiator(Gladiator);
   }
-  async deleteGladiator(id: string) {
-    return this.client.deleteGladiator(id);
+  async deleteGladiator(name: string) {
+    return this.client.deleteGladiator(name);
+  }
+  async restoreGladiatorStatus(name: string) {
+    return this.client.restoreGladiatorStatus(name);
   }
 }

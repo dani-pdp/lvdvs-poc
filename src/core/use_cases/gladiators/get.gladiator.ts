@@ -6,8 +6,8 @@ import { GladiatorOutputDto, fromGladiatortEntity } from '../../dto/gladiators/g
 export class GetGladiator {
   constructor(private readonly gladiatorsService: GladiatorsService) {}
 
-  public async call(id: string): Promise<GladiatorOutputDto> {
-    const gladiator = await this.gladiatorsService.getGladiator(id);
+  public async call(name: string): Promise<GladiatorOutputDto> {
+    const gladiator = await this.gladiatorsService.getGladiator(name);
     return fromGladiatortEntity(gladiator);
   }
 }

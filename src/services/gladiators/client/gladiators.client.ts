@@ -9,14 +9,12 @@ export class GladiatorsClient {
 
   async getAllGladiators(): Promise<any> {
     return await this.gladiatorsRepository.find({
-      select: ['name', 'style', 'bio', 'level', 'state', 'popularity'],
+      select: ['name', 'style', 'bio', 'level', 'status', 'popularity'],
     });
   }
 
-  async getGladiator(id: string): Promise<any> {
-    return await this.gladiatorsRepository.find({
-      where: [{ name: id }],
-    });
+  async getGladiator(name: string): Promise<any> {
+    return await this.gladiatorsRepository.findOne(name);
   }
 
   async createGladiator(gladiator: Gladiator) {
@@ -29,5 +27,11 @@ export class GladiatorsClient {
 
   async deleteGladiator(id: string) {
     return await this.gladiatorsRepository.delete(id);
+  }
+
+  async restoreGladiatorStatus(name: string) {
+    let gladiator = await this.gladiatorsRepository.findOne(name);
+    gladiator.status = 'READY';
+    return await this.gladiatorsRepository.save(gladiator);
   }
 }

@@ -11,7 +11,9 @@ export class CombatsService {
     const combat = new Combat();
     combat.gladiator1 = await this.client.getGladiator(combatInput.gladiator1);
     combat.gladiator2 = await this.client.getGladiator(combatInput.gladiator2);
+    const results = combat.simulate();
+    this.client.setGladiatorStatus(results.loser, results.result);
 
-    return combat.simulate();
+    return results.winner.name + ' won against ' + results.loser.name + '(' + results.result + ')';
   }
 }
