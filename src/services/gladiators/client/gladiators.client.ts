@@ -15,7 +15,7 @@ export class GladiatorsClient {
 
   async getGladiator(id: string): Promise<any> {
     return await this.gladiatorsRepository.find({
-      where: [{ id: id }],
+      where: [{ name: id }],
     });
   }
 

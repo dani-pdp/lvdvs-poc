@@ -10,7 +10,7 @@ export interface StyleModifiers {
   attackMod: number;
 }
 
-@Entity()
+@Entity({ name: 'gladiators' })
 export class Gladiator {
   @PrimaryColumn()
   name: string;

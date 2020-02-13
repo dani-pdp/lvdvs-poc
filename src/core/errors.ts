@@ -9,13 +9,9 @@ export const ApiErrors = {
 
 export const DomainErrors = {
   ...ApiErrors,
-  INVALID_GLADIATOR_ID: {
+  SAME_GLADIATOR: {
     code: 3001,
-    message: 'Invalid gladiator id provided.',
-  },
-  INVALID_GLADIATOR_BIO: {
-    code: 3002,
-    message: 'The bio provided is too short.',
+    message: 'Cannot create a combat with two instances of the same gladiator',
   },
 };
 
