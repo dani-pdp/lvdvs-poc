@@ -13,6 +13,10 @@ export const DomainErrors = {
     code: 3001,
     message: 'Cannot create a combat with two instances of the same gladiator',
   },
+  INVALID_COMBAT: {
+    code: 3001,
+    message: 'One or both gladiators are dead or in recover',
+  },
 };
 
 export interface IDomainError {

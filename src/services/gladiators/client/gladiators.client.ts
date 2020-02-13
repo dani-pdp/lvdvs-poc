@@ -34,4 +34,13 @@ export class GladiatorsClient {
     gladiator.status = 'READY';
     return await this.gladiatorsRepository.save(gladiator);
   }
+
+  async restoreAllGladiatorsStatus() {
+    const gladiators = await this.getAllGladiators();
+    gladiators.map(gladiator => {
+      gladiator.status = 'READY';
+      this.gladiatorsRepository.save(gladiator);
+    });
+    return 'All status restored';
+  }
 }

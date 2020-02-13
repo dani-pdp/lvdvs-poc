@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Gladiator } from '../../../core/entities/gladiator';
-import { resultConsequence } from '../../../core/entities/gladiator.styles.init';
+import { resultConsequence } from '../../../core/entities/gladiator.utils';
 
 @Injectable()
 export class CombatsClient {

@@ -1,4 +1,5 @@
 import { Gladiator } from './gladiator';
+import { DomainErrors, DomainError } from '../errors';
 
 export class Combat {
   gladiator1: Gladiator;
@@ -7,6 +8,16 @@ export class Combat {
   loser: Gladiator;
   result: string;
 
+  constructor(gladiator1: Gladiator, gladiator2: Gladiator) {
+    this.gladiator1 = gladiator1;
+    this.gladiator2 = gladiator2;
+  }
+
+  public assureValid() {
+    if (this.gladiator1.status != 'READY' || this.gladiator2.status != 'READY') {
+      throw new DomainError(DomainErrors.INVALID_COMBAT);
+    }
+  }
   public simulate() {
     this.contest();
     return { winner: this.winner, loser: this.loser, result: this.result };

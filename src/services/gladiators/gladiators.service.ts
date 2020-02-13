@@ -24,4 +24,7 @@ export class GladiatorsService {
   async restoreGladiatorStatus(name: string) {
     return this.client.restoreGladiatorStatus(name);
   }
+  async restoreAllGladiatorStatus() {
+    return this.client.restoreAllGladiatorsStatus();
+  }
 }

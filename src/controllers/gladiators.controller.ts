@@ -6,6 +6,7 @@ import { ModifyGladiator } from '../core/use_cases/gladiators/modify.gladiator';
 import { DeleteGladiator } from '../core/use_cases/gladiators/delete.gladiator';
 import { RestoreGladiatorStatus } from '../core/use_cases/gladiators/restore.gladiator.status';
 import { CreateGladiatorInputDto } from '../core/dto/gladiators/create.gladiator.input.dto';
+import { RestoreAllGladiatorStatus } from '../core/use_cases/gladiators/restore.all.gladiators.status';
 
 @Controller('gladiators')
 export class GladiatorsController {
@@ -16,6 +17,7 @@ export class GladiatorsController {
     private readonly modifyGladiator: ModifyGladiator,
     private readonly deleteGladiator: DeleteGladiator,
     private readonly restoreGladiatorStatus: RestoreGladiatorStatus,
+    private readonly restoreAllGladiatorStatus: RestoreAllGladiatorStatus,
   ) {}
 
   @Get()
@@ -25,6 +27,7 @@ export class GladiatorsController {
 
   @Get(':name')
   get_Gladiator(@Param('name') GladiatorId: string) {
+    console.log('getGladiator');
     return this.getGladiator.call(GladiatorId);
   }
 
@@ -45,6 +48,13 @@ export class GladiatorsController {
 
   @Get('/restore/:name')
   restore_Gladiator_Status(@Param('name') GladiatorId: string) {
+    console.log('ttt');
     return this.restoreGladiatorStatus.call(GladiatorId);
+  }
+
+  @Get('/restoreall')
+  restore_All_Gladiator_Status() {
+    console.log('restoreando');
+    return this.restoreAllGladiatorStatus.call();
   }
 }

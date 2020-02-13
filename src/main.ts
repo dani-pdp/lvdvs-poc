@@ -9,7 +9,6 @@ async function bootstrap() {
     .setTitle('LVDVS')
     .setDescription('LVDUS API description')
     .setVersion('1.0')
-    .addTag('Gladiators')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);

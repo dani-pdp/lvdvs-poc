@@ -8,9 +8,12 @@ export class CombatsService {
   constructor(private readonly client: CombatsClient) {}
 
   async createCombat(combatInput: CreateCombatInputDto) {
-    const combat = new Combat();
-    combat.gladiator1 = await this.client.getGladiator(combatInput.gladiator1);
-    combat.gladiator2 = await this.client.getGladiator(combatInput.gladiator2);
+    const combat = new Combat(
+      await this.client.getGladiator(combatInput.gladiator1),
+      await this.client.getGladiator(combatInput.gladiator2),
+    );
+    combat.assureValid();
+
     const results = combat.simulate();
     this.client.setGladiatorStatus(results.loser, results.result);
 

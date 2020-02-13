@@ -1,5 +1,5 @@
 import { Gladiator, GladiatorStyle } from '../../../core/entities/gladiator';
-import { gladiatorStyleInit } from '../../../core/entities/gladiator.styles.init';
+import { gladiatorStyleInit } from '../../entities/gladiator.utils';
 
 export class CreateGladiatorInputDto {
   readonly name: string;
