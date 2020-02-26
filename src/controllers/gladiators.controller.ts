@@ -25,7 +25,7 @@ export class GladiatorsController {
     return this.getAllGladiators.call();
   }
 
-  @Get(':name')
+  @Get('/:name')
   get_Gladiator(@Param('name') GladiatorId: string) {
     console.log('getGladiator');
     return this.getGladiator.call(GladiatorId);
@@ -46,13 +46,13 @@ export class GladiatorsController {
     return this.deleteGladiator.call(GladiatorId);
   }
 
-  @Get('/restore/:name')
+  @Get('/medicvs/restore/:name')
   restore_Gladiator_Status(@Param('name') GladiatorId: string) {
     console.log('ttt');
     return this.restoreGladiatorStatus.call(GladiatorId);
   }
 
-  @Get('/restoreall')
+  @Get('/medicvs/restoreall')
   restore_All_Gladiator_Status() {
     console.log('restoreando');
     return this.restoreAllGladiatorStatus.call();

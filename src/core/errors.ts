@@ -14,8 +14,12 @@ export const DomainErrors = {
     message: 'Cannot create a combat with two instances of the same gladiator',
   },
   INVALID_COMBAT: {
-    code: 3001,
+    code: 3002,
     message: 'One or both gladiators are dead or in recover',
+  },
+  NO_SUCH_STYLE: {
+    code: 3003,
+    message: 'Style provided does not exist',
   },
 };
 

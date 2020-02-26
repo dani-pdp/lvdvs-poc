@@ -1,9 +1,16 @@
 import { Gladiator, GladiatorStyle } from '../../../core/entities/gladiator';
 import { gladiatorStyleInit } from '../../entities/gladiator.utils';
+import { DomainError, DomainErrors } from 'src/core/errors';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateGladiatorInputDto {
+  @ApiProperty()
   readonly name: string;
+
+  @ApiProperty({ enum: GladiatorStyle })
   readonly style: string;
+
+  @ApiProperty()
   readonly bio: string;
 }
 
@@ -12,6 +19,12 @@ export const toGladiator = (input: CreateGladiatorInputDto): Gladiator => {
     return null;
   }
   const gladiator = new Gladiator();
+
+  this.style in GladiatorStyle;
+  if (!(input.style in GladiatorStyle)) {
+    throw new DomainError(DomainErrors.NO_SUCH_STYLE);
+  }
+
   const styleInit = gladiatorStyleInit[input.style];
   gladiator.name = input.name;
   gladiator.bio = input.bio;
